@@ -43,7 +43,7 @@
 }
 
 .card-visible {
-    animation: fadeIUp 0.5s forwards;
+    animation: fadeInUp 0.5s forwards;
 }
 
 .card_description{

@@ -24,3 +24,23 @@ let popupEnd2 = document.getElementById("overlay");
 popupEnd2.addEventListener("click",function(){
     document.getElementById("popup").style.display = "none"
 })
+
+//カードをふわっと表示アニメーション
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.card');
+
+    const checkCardVisibility = () => {
+        cards.forEach(card => {
+            const cardPosition = card.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight;
+            console.log(cardPosition)
+            console.log(screenPosition)
+            if(cardPosition < screenPosition) {
+                card.classList.add('card-visible');
+            }
+        });
+    };
+
+    window.addEventListener('scroll', checkCardVisibility);
+    checkCardVisibility();  // 初回ロード時のチェックのためにも呼び出し
+});
