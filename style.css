@@ -21,11 +21,29 @@
     justify-content: space-between;
 }
 
+/* 経歴をふわっと表示 */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .card{
     width: 31%;
     border: 1px solid black;
     background-color: white;
     filter: drop-shadow(10px 25px 20px rgba(21, 26, 35, 0.6));
+    opacity: 0;
+    transition: all 0.5s ease-out;
+}
+
+.card-visible {
+    animation: fadeIUp 0.5s forwards;
 }
 
 .card_description{
@@ -40,6 +58,8 @@
 li{
     list-style: none;
 }
+
+
 
 /* 猫アイコン */
 .container a{
@@ -131,21 +151,22 @@ footer {
 
 /* 画像のポップアップ表示の勉強 */
 #overlay {
-    position: fixed;
+    position: fixed;/*これを使ったらtopとleftの初期位置を指定する*/
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1000;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 10;
 }
 
 #modal {
     position: fixed;
+    z-index: 11;
+    /* 以下の３点セットで要素を中央に配置できる小技 */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1001;
 }
 
 #popupImage {
@@ -159,6 +180,5 @@ footer {
     right: 10px;
     font-size: 24px;
     color: white;
-    text-decoration: none;
     cursor: pointer;
 }
