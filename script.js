@@ -31,12 +31,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const checkCardVisibility = () => {
         cards.forEach(card => {
-            const cardPosition = card.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight;
-            console.log(cardPosition)
-            console.log(screenPosition)
-            if(cardPosition < screenPosition) {
-                card.classList.add('card-visible');
+            const viewTop = card.getBoundingClientRect().top;
+            const viewBottom = window.innerHeight / 2;
+            if (viewTop < viewBottom){
+                card.classList.add("card-visible");
             }
         });
     };
