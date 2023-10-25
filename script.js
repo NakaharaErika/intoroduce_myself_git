@@ -30,35 +30,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
-//アイコンをクリックすると、こたろうくん出現
-    //アイコンクリック
-    let popupStart = document.getElementById("imageLink");
-    popupStart.addEventListener("click",function(event){
-        event.preventDefault();//aタグはデフォルトでページ遷移するので阻止
-
-        const aHref = this.getAttribute("href");
-        const imgSrc = document.getElementById("popupImage");
-        imgSrc.setAttribute("src", aHref);//URLを挿入
-        document.getElementById("popup").style.display = "block"//styleをnoneからblockに
-    })
-
-    //ばつボタンクリック
-    let popupEnd1 = document.getElementById("closeButton");
-    popupEnd1.addEventListener("click",function(event){
-        event.preventDefault();
-
-        document.getElementById("popup").style.display = "none"
-    })
-
-    //モーダルクリックで元に戻る
-    let popupEnd2 = document.getElementById("overlay");
-    popupEnd2.addEventListener("click",function(){
-        document.getElementById("popup").style.display = "none"
-    })
-
-
-    
 //カードをふわっと表示アニメーション（画面上の相対位置を使う方法）
 document.addEventListener('DOMContentLoaded', function() {//DOMが全て読み込まれていることを確認
     const cards = document.querySelectorAll('.card');
@@ -76,6 +47,37 @@ document.addEventListener('DOMContentLoaded', function() {//DOMが全て読み�
     window.addEventListener('scroll', checkCardVisibility);
     checkCardVisibility();  // 初回ロード時のチェックのためにも呼び出し
 });
+
+
+
+//アイコンをクリックすると、こたろうくん出現
+    //アイコンクリック
+let popupStart = document.getElementById("imageLink");
+popupStart.addEventListener("click",function(event){
+    event.preventDefault();//aタグはデフォルトでページ遷移するので阻止
+
+    const aHref = this.getAttribute("href");
+    const imgSrc = document.getElementById("popupImage");
+    imgSrc.setAttribute("src", aHref);//URLを挿入
+    document.getElementById("popup").style.display = "block"//styleをnoneからblockに
+})
+
+//ばつボタンクリック
+let popupEnd1 = document.getElementById("closeButton");
+popupEnd1.addEventListener("click",function(event){
+    event.preventDefault();
+
+    document.getElementById("popup").style.display = "none"
+})
+
+//モーダルクリックで元に戻る
+let popupEnd2 = document.getElementById("overlay");
+popupEnd2.addEventListener("click",function(){
+    document.getElementById("popup").style.display = "none"
+})
+
+
+    
 
 // スクロールボタンの実装
 document.addEventListener("DOMContentLoaded", function(){
@@ -101,5 +103,3 @@ document.addEventListener("DOMContentLoaded", function(){
         window.scrollTo({top: 0, behavior:"smooth"});
     })
 })
-
-
