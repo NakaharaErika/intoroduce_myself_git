@@ -12,6 +12,24 @@
 //     }
 // });
 
+//今何時？
+document.addEventListener("DOMContentLoaded", function() {
+    const newDate = document.getElementById("newDate");
+    
+    newDate.addEventListener("click", () => {
+        let today = new Date(); 
+
+        let year = today.getFullYear();
+        let month = today.getMonth() + 1;
+        let week = today.getDay();
+        let day = today.getDate();
+
+        let week_ja = ["日", "月", "火", "水", "木", "金", "土"];
+
+        alert(year + "年" + month + "月" + day + "日 " + week_ja[week] + "曜日");
+    });
+});
+
 
 //アイコンをクリックすると、こたろうくん出現
     //アイコンクリック
@@ -65,10 +83,13 @@ document.addEventListener("DOMContentLoaded", function(){
     // 一番下まできたら表示する
         //  スクロール位置を毎回読み込む（実装時は重くなる原因になりそう・・・）
     window.addEventListener("scroll",function(){
+        // ページの最上部からビューポートの最上部までの距離（どんどん大きくなる）
         const scrolledTop = window.scrollY;
+        // ビューポートの高さを取得
         const viewpotHeight = window.innerHeight;
+        // ページ全体の高さ
         const docHeight = document.documentElement.scrollHeight;
-
+        // ページ全体の高さからビューポートの高さを引いたもの（一定の値）
         const bottomPosition = docHeight - viewpotHeight;
         movetopButton.style.display = (scrolledTop >= bottomPosition - 10) ? "flex" : 'none';
 
@@ -80,3 +101,5 @@ document.addEventListener("DOMContentLoaded", function(){
         window.scrollTo({top: 0, behavior:"smooth"});
     })
 })
+
+
