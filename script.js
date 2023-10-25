@@ -58,3 +58,25 @@ document.addEventListener('DOMContentLoaded', function() {//DOMが全て読み�
     window.addEventListener('scroll', checkCardVisibility);
     checkCardVisibility();  // 初回ロード時のチェックのためにも呼び出し
 });
+
+// スクロールボタンの実装
+document.addEventListener("DOMContentLoaded", function(){
+    const movetopButton = document.getElementById("topButton");
+    // 一番下まできたら表示する
+        //  スクロール位置を毎回読み込む（実装時は重くなる原因になりそう・・・）
+    window.addEventListener("scroll",function(){
+        const scrolledTop = window.scrollY;
+        const viewpotHeight = window.innerHeight;
+        const docHeight = document.documentElement.scrollHeight;
+
+        const bottomPosition = docHeight - viewpotHeight;
+        movetopButton.style.display = (scrolledTop >= bottomPosition - 10) ? "flex" : 'none';
+
+    })
+    
+
+    // ボタンクリックで一番上に戻る
+    movetopButton.addEventListener("click", function(){
+        window.scrollTo({top: 0, behavior:"smooth"});
+    })
+})
